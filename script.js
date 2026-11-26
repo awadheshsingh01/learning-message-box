@@ -35,7 +35,7 @@
     box.className = 'thanks';
  
     var heading = document.createElement('h2');
-    heading.textContent = 'Thank you for visiting and providing your text message!';
+    heading.textContent = 'Thank you for visiting and providing your text message! Created by Awadhesh';
  
     var label = document.createElement('p');
     label.textContent = 'You wrote:';
