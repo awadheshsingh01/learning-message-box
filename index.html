@@ -1,1 +1,249 @@
-<head><title>Test</title></head><p>hello</p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:,">
+  <title>Learning Corner - Message Box</title>
+  <style>
+:root {
+  --bg: #eef2ff;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --accent: #14b8a6;
+  --warn: #b45309;
+  --border: #c7d2fe;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --primary: #818cf8;
+    --primary-dark: #6366f1;
+    --accent: #2dd4bf;
+    --warn: #fbbf24;
+    --border: #334155;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 20px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+}
+.hero h1 { margin: 0; font-size: 1.8rem; }
+.tagline { margin: 4px 0 0; opacity: 0.9; }
+main { max-width: 640px; margin: 0 auto; padding: 20px; }
+.steps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.steps li {
+  flex: 1 1 160px;
+  background: var(--card);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+.num {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0f172a;
+  margin-right: 6px;
+}
+.card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-left: 10px solid var(--primary);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
+}
+.books { float: right; margin: 0 0 8px 12px; }
+label { display: block; font-weight: 700; margin-bottom: 6px; }
+textarea {
+  width: 100%;
+  padding: 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  resize: vertical;
+}
+textarea:focus-visible, button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+#counter { color: var(--muted); font-size: 0.9rem; }
+button {
+  font: inherit;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--primary-dark);
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 28px;
+  cursor: pointer;
+}
+button:hover { background: #3730a3; }
+#result { margin-top: 16px; }
+.thanks {
+  border-left: 6px solid var(--accent);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.thanks h2 { margin: 0 0 6px; font-size: 1.15rem; }
+.thanks blockquote {
+  margin: 8px 0 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.warn { color: var(--warn); font-weight: 600; }
+.privacy { color: var(--muted); font-size: 0.9rem; text-align: center; }
+footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 16px; }
+
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <svg class="cap" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+      <polygon points="32,10 60,24 32,38 4,24" fill="#fbbf24"/>
+      <path d="M16 32v12c0 5 32 5 32 0V32l-16 8z" fill="#f59e0b"/>
+      <line x1="58" y1="25" x2="58" y2="44" stroke="#fbbf24" stroke-width="3"/>
+      <circle cx="58" cy="47" r="3" fill="#fbbf24"/>
+    </svg>
+    <div>
+      <h1>Learning Corner</h1>
+      <p class="tagline">Type a message, press OK, and see how a web page responds.</p>
+    </div>
+  </header>
+
+  <main>
+    <ol class="steps" aria-label="How it works">
+      <li><span class="num">1</span> Type your message</li>
+      <li><span class="num">2</span> Click OK</li>
+      <li><span class="num">3</span> Read the thank-you</li>
+    </ol>
+
+    <section class="card">
+      <svg class="books" viewBox="0 0 120 80" width="96" height="64" aria-hidden="true">
+        <rect x="8" y="30" width="22" height="46" rx="3" fill="#6366f1"/>
+        <rect x="34" y="20" width="22" height="56" rx="3" fill="#14b8a6"/>
+        <rect x="60" y="34" width="22" height="42" rx="3" fill="#f59e0b"/>
+        <rect x="86" y="24" width="22" height="52" rx="3" fill="#ec4899"/>
+        <rect x="4" y="76" width="108" height="4" rx="2" fill="#94a3b8"/>
+      </svg>
+
+      <label for="message">Your message</label>
+      <textarea id="message" maxlength="500" rows="4" placeholder="Write something you learned today..."></textarea>
+
+      <div class="row">
+        <span id="counter" aria-live="off">0 / 500</span>
+        <button id="ok" type="button">OK</button>
+      </div>
+
+      <div id="result" role="status" aria-live="polite"></div>
+    </section>
+
+    <p class="privacy">
+      Privacy note: your message is shown on this screen only. It is not saved and not sent anywhere.
+    </p>
+  </main>
+
+  <footer>A hands-on learning project &middot; runs entirely in your browser</footer>
+
+  <script>
+(function () {
+  'use strict';
+
+  var MAX_LENGTH = 500;
+
+  var input = document.getElementById('message');
+  var button = document.getElementById('ok');
+  var result = document.getElementById('result');
+  var counter = document.getElementById('counter');
+
+  function clearResult() {
+    while (result.firstChild) {
+      result.removeChild(result.firstChild);
+    }
+  }
+
+  input.addEventListener('input', function () {
+    counter.textContent = input.value.length + ' / ' + MAX_LENGTH;
+  });
+
+  button.addEventListener('click', function () {
+    var text = input.value.trim().slice(0, MAX_LENGTH);
+    clearResult();
+
+    if (text === '') {
+      var warning = document.createElement('p');
+      warning.className = 'warn';
+      warning.textContent = 'Please type a message first, then click OK.';
+      result.appendChild(warning);
+      input.focus();
+      return;
+    }
+
+    var box = document.createElement('div');
+    box.className = 'thanks';
+
+    var heading = document.createElement('h2');
+    heading.textContent = 'Thank you for visiting and providing your text message!';
+
+    var label = document.createElement('p');
+    label.textContent = 'You wrote:';
+
+    // textContent treats the visitor's text as plain text, never as markup.
+    var quote = document.createElement('blockquote');
+    quote.textContent = text;
+
+    box.appendChild(heading);
+    box.appendChild(label);
+    box.appendChild(quote);
+    result.appendChild(box);
+
+    input.value = '';
+    counter.textContent = '0 / ' + MAX_LENGTH;
+  });
+})();
+
+  </script>
+</body>
